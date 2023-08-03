@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{titulo}}</title>
+    <style>
+        /* Estilos para o menu e o footer (pode ser personalizado conforme necessário) */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Pagina inicial</a>
+            <a href="/sobre">Sobre</a>
+            <a href="/contatos">Contato</a>
+        </nav>
+
+    {% block conteudo %}
+
+    {% endblock %}
+
+
+
+    <footer>
+        <p>Rodapé - © 2023</p>
+    </footer>
+</body>
+</html>
