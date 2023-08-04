@@ -1,12 +1,26 @@
 {% extends 'base.html' %}
 {% block conteudo %}
     <div class="container">
-        <h1>Olá, mundo!</h1>
-        <p>Seja bem-vindo ao nosso site comercial. Aqui você encontra as melhores soluções para o seu negócio.</p>
-        <a href="meu_curriculo.pdf" class="btn" style="background-color: #ff6347;">Descubra mais</a>
-        <div class="feature" style="background-color: #28a745;">Frete grátis</div>
-        <div class="feature" style="background-color: #17a2b8;">Suporte 24/7</div>
+        <h1 class="title">Bem-vindo ao nosso mundo</h1>
+        <p class="description">Explore as maravilhas de nossos produtos e serviços exclusivos.</p>
+        <a href="meu_curriculo.pdf" class="btn">Descubra mais</a>
+        <div class="feature feature-green">Frete grátis</div>
+        <div class="feature feature-blue">Suporte 24/7</div>
+
+        <section class="services">
+            <h2>Serviços Oferecidos</h2>
+            <p>Nossos serviços incluem consultoria empresarial, desenvolvimento de software personalizado, marketing digital e muito mais. Conte com nossa equipe especializada para impulsionar o seu negócio.</p>
+        </section>
+
+        <section class="products">
+            <h2>Produtos em Destaque</h2>
+            <ul>
+                <li>Produto 1</li>
+                <li>Produto 2</li>
+                <li>Produto 3</li>
+                <li>Produto 4</li>
+            </ul>
+        </section>
     </div>
-</body>
-</html>
 {% endblock %}
+

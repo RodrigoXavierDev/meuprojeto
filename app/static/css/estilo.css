@@ -1,0 +1,112 @@
+/* Estilos para o menu e o footer */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    padding: 20px;
+}
+
+section {
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin: 10px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Estilos adicionais para a página inicial */
+.title {
+    font-size: 36px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.description {
+    font-size: 18px;
+    color: #777;
+    text-align: center;
+}
+
+.feature {
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    margin: 10px;
+    border-radius: 5px;
+    width: 150px;
+}
+
+.feature-green {
+    background-color: #27ae60; /* Verde */
+}
+
+.feature-blue {
+    background-color: #3498db; /* Azul */
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-weight: bold;
+    background-color: #e74c3c; /* Vermelho */
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #c0392b; /* Vermelho mais escuro */
+}
+
+.services {
+    background-color: #f1c40f; /* Amarelo */
+    color: #333;
+}
+
+.services h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.products {
+    background-color: #9b59b6; /* Roxo */
+    color: #fff;
+}
+
+.products h2 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.products li {
+    color: #fff;
+    list-style-type: square;
+}
