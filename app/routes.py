@@ -1,15 +1,18 @@
 from app import app
 from flask import render_template
 
-@app.route("/")
+@app.route('/')
 def index():
-    return render_template('index.html',titulo = "Pagina inicial")
+    return render_template('index.html',titulo = 'Pagina inicial')
 
 @app.route('/contatos')
 def contatos():
-    return render_template("contatos.html",titulo = "Contatos")
+    return render_template('contatos.html',titulo = 'Contatos')
 
-@app.route("/sobre")
+@app.route('/sobre')
 def sobre():
-    return render_template("sobre.html",titulo = "Sobre")
+    return render_template('sobre.html',titulo = 'Sobre')
 
+@app.route('/linguagens')
+def linguagens():
+    return render_template('linguagens.html',titulo = 'Linguagens')
