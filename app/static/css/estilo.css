@@ -1,7 +1,5 @@
-/* Restante do seu CSS permanece o mesmo */
-
-/* Estilos adicionais para o post */
-.post {
+ /* Seu CSS personalizado começa aqui */
+ .post {
     background-color: #FFF;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -55,3 +53,4 @@
 .services, .products, .post-content {
     margin-bottom: 20px;
 }
+/* Seu CSS personalizado termina aqui */

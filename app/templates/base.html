@@ -5,24 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{titulo}}</title>
     <link rel="stylesheet" href="{{url_for('static',filename='css/estilo.css')}}">
+
 </head>
 <body>
     <header>
         <nav>
-            <a href="/">Pagina inicial</a>
+            <a href="/">Página Inicial</a>
             <a href="/sobre">Sobre</a>
             <a href="/contatos">Contato</a>
             <a href="/linguagens">Linguagens</a>
         </nav>
+    </header>
 
-    {% block conteudo %}
+    <div class="container">
+        {% block conteudo %}
 
-    {% endblock %}
-
-
+        {% endblock %}
+    </div>
 
     <footer>
-        <p>Rodrigo Xavier Lima - © 2023</p>
+        <p>&copy; 2023 Rodrigo Xavier Lima</p>
     </footer>
 </body>
 </html>

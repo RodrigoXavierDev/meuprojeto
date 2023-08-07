@@ -3,5 +3,34 @@
 <section>
     <h2>Contatos:</h2>
     <p>Email: xavierlrodrigo@gmail.com</p>
+    
+    <h2>Envie uma mensagem:</h2>
+    <div class="form-container">
+        <form action="/enviar_mensagem" method="post" class="contact-form">
+            {{ formulario.csrf_token }}
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                {{ formulario.none }}
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                {{ formulario.email }}
+            </div>
+            
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                {{ formulario.telefone }}
+            </div>
+            
+            <div class="form-group">
+                <label for="mensagem">Mensagem:</label>
+                {{ formulario.enviar }}
+            </div>
+            
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
 </section>
+
 {% endblock %}
