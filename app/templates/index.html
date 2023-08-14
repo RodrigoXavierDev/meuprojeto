@@ -1,28 +1,61 @@
 {% extends 'base.html' %}
 {% block conteudo %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-4">Bem-vindo ao meu Blog</h1>
+            <p class="lead">Compartilhando minhas aventuras na programação.</p>
+        </div>
+    </div>
+
     <div class="container">
-        <h1 class="title">Bem-vindo ao meu mundo</h1>
-        <p class="description">Ainda novo no mundo de propragamação.</p>
-        <div class="feature feature-green">
-            <a href="#" class="btn">Projetos</a>
-        </div>
-        <div class="feature feature-blue">
-            <a href="meu_curriculo.pdf" class="btn">Curriculo</a>
-        </div>
-        <div class="feature feature-blue">
-            <a href="#" class="btn">Certificados</a>
-        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="post">
+                    <div class="post-header">
+                        <h2 class="post-title">Iniciando Minha Jornada na Programação Python</h2>
+                        <p class="post-meta">Publicado em 14 de Agosto de 2023</p>
+                    </div>
+                    <div class="post-content">
+                        <p>Olá, pessoal! Hoje quero compartilhar com vocês o começo emocionante da minha jornada na programação Python.</p>
+                        <p>A linguagem Python sempre me fascinou por sua simplicidade e poder. Recentemente, decidi mergulhar de cabeça no mundo da programação e escolhi Python como minha primeira linguagem.</p>
+                        <p>No decorrer deste blog, vou compartilhar meu aprendizado, meus projetos e minhas experiências com vocês. Fiquem ligados!</p>
+                        <a href="#" class="btn btn-primary">Leia Mais</a>
+                    </div>
+                </div>
 
-        <section class="services">
-            <h2>Aluno de programação</h2>
-            <p></p>
-        </section>
+                <div class="post">
+                    <div class="post-header">
+                        <h2 class="post-title">Explorando Algoritmos em Python</h2>
+                        <p class="post-meta">Publicado em 18 de Agosto de 2023</p>
+                    </div>
+                    <div class="post-content">
+                        <p>Hoje mergulhamos fundo no mundo dos algoritmos em Python. Aprendemos sobre algoritmos de ordenação, busca e muito mais.</p>
+                        <p>Desenvolver algoritmos é uma parte essencial da programação, e estou animado para compartilhar algumas das minhas descobertas.</p>
+                        <a href="#" class="btn btn-primary">Leia Mais</a>
+                    </div>
+                </div>
 
-        <section class="products">
-            <h2>Meus projetos:</h2>
-            <ul>
-                <li>Projeto 1:</li>
-            </ul>
-        </section>
+                <div class="post">
+                    <div class="post-header">
+                        <h2 class="post-title">Construindo Minha Primeira Aplicação Web com Flask</h2>
+                        <p class="post-meta">Publicado em 22 de Agosto de 2023</p>
+                    </div>
+                    <div class="post-content">
+                        <p>Hoje foi um marco na minha jornada na programação. Construí minha primeira aplicação web usando o framework Flask em Python.</p>
+                        <p>Exploramos rotas, templates e muito mais. Estou empolgado para compartilhar o passo a passo com vocês!</p>
+                        <a href="#" class="btn btn-primary">Leia Mais</a>
+                    </div>
+                </div>
+
+                <!-- Adicione mais posts semelhantes aqui -->
+
+            </div>
+            <div class="col-md-4">
+                <div class="sidebar">
+                    <h3 class="sidebar-title">Sobre Mim</h3>
+                    <p>Olá! Meu nome é Rodrigo e sou um entusiasta da programação. Estou apaixonado por aprender e compartilhar conhecimento.</p>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

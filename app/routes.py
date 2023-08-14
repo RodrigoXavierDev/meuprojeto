@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template
+from flask import render_template, url_for, request, flash
 from app.forms import Contato
 
 @app.route('/')
@@ -12,17 +12,21 @@ def contatos():
     formulario = Contato()
     print('Acessou a rota contatos')
     if formulario.validate_on_submit():
-        print('o formulario foi validado')
+        
         nome = formulario.nome.data
         email = formulario.email.data
         telefone = formulario.telefone.data
         mensagem = formulario.mensagem.data
-    dados_formulario = {
-        'nome': nome,
-        'email': email,
-        'telefone': telefone,
-        'mensagem': mensagem
-    }
+        print('o formulario foi validado')
+        print(nome)
+        print(telefone)
+        print(mensagem)
+        dados_formulario = {
+            'nome': nome,
+            'email': email,
+            'telefone': telefone,
+            'mensagem': mensagem
+        }
 
 
     return render_template('contatos.html',titulo = 'Contatos', formulario = formulario,dados_formulario = formulario)
@@ -35,3 +39,7 @@ def sobre():
 @app.route('/linguagens')
 def linguagens():
     return render_template('linguagens.html',titulo = 'Linguagens')
+
+@app.route('/teste')
+def teste():
+    return render_template('teste.html')
