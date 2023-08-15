@@ -1,12 +1,22 @@
 {% extends 'base.html' %}
+
 {% block conteudo %}
 <section>
     <h2>Contatos:</h2>
-    <p>Email: xavierlrodrigo@gmail.com</p>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for mensagem in messages %}
+            <div class="alert alert-success" role="alert">
+                {{ mensagem }}
+              </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <p>Entre em contato comigo, preencha o formulario abaixo:</p>
     
     <h2>Envie uma mensagem:</h2>
     <div class="form-container">
-        <form action="/enviar_mensagem" method="post" class="contact-form">
+        <form action="" method="post" class="contact-form">
             {{ formulario.csrf_token }}
             <div class="form-group">
                 <label for="nome">Nome:</label>
