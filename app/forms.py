@@ -8,3 +8,9 @@ class Contato(FlaskForm):
     telefone = TelField('telefone', validators=[DataRequired()])
     mensagem = TextAreaField('mensagem')
     enviar = SubmitField('enviar')
+
+class Cadastro(flaskForm):
+    nome = StringField('nome', validators=[DataRequired()])
+    email = StringField('email', validators=[DataRequired()])
+    senha = StringField('senha', validators=[DataRequired()])
+    enviar = StringField('Enviar')
