@@ -8,20 +8,21 @@
                     <h4>Cadastre-se</h4>
                 </div>
                 <div class="card-body">
-                    <form action="/registrar" method="POST">
+                    <form action="" method="POST">
+                        {{ cadastro.csrf_token }}
                         <div class="form-group">
                             <label for="nome">Nome</label>
-                            <input type="text" class="form-control" id="nome" name="nome" required>
+                            {{ cadastro.nome(class="form-control") }}
                         </div>
                         <div class="form-group">
                             <label for="email">E-mail</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            {{ cadastro.email(class="form-control") }}
                         </div>
                         <div class="form-group">
                             <label for="senha">Senha</label>
-                            <input type="password" class="form-control" id="senha" name="senha" required>
+                            {{ cadastro.senha(class="form-control") }}
                         </div>
-                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                        {{ cadastro.enviar(class="btn btn-primary") }}
                     </form>
                 </div>
             </div>

@@ -6,10 +6,19 @@
             <div class="card mt-5">
                 <div class="card-header">
                     <h4>Login</h4>
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for mensagem in messages %}
+                            <div class="alert alert-success" role="alert">
+                                {{ mensagem }}
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
                     <p>Bem vindo de novo!</p>
                 </div>
                 <div class="card-body">
-                    <form action="/login" method="POST">
+                    <form action="" method="POST">
                         <div class="form-group">
                             <label for="email">E-mail</label>
                             <input type="email" class="form-control" id="email" name="email" required>

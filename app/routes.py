@@ -1,9 +1,10 @@
-from app import app, db
-from flask import render_template, url_for, request, flash
+from app import app, db, bcrypt
+from flask import render_template, url_for, request, flash, session, redirect
 from app.forms import Contato
-from app.models import ContatoModel
+from app.models import ContatoModel, CadastroModel
 from app.forms import Cadastro
-from app.models import CadastroModel
+from flask_bcrypt import check_password_hash
+import time
 
 
 @app.route('/')
@@ -26,8 +27,6 @@ def contatos():
         db.session.add(novo_contato)
         db.session.commit()
 
-        
-
     return render_template('contatos.html',titulo = 'Contatos', formulario = formulario,dados_formulario = dados_formulario)
 
 @app.route('/sobre')
@@ -47,17 +46,37 @@ def cadastro():
     dados_formulario = None
     cadastro = Cadastro()
     print('Acessou a rota de cadastro!')
-    if cadastro.validate_on_submite():
+    if cadastro.validate_on_submit():
         flash('Seu cadastro foi realizado com sucesso!')
         nome = cadastro.nome.data
         email = cadastro.email.data
         senha = cadastro.senha.data
-
-        novo_cadastro = CadastroModel(nome=nome,email=email,senha=senha)
+        hash_senha = bcrypt.generate_password_hash(senha).decode('utf_8')
+        novo_cadastro = CadastroModel(nome=nome,email=email,senha=hash_senha)
         db.session.add(novo_cadastro)
-        db.session.comnit()
-    return render_template('cadastro.html',titulo = 'Cadastro')
+        db.session.commit()
+    return render_template('cadastro.html',titulo = 'Cadastro', cadastro=cadastro)
 
-@app.route('/login')
+@app.route('/login', methods=['POST', 'GET'])
 def login():
+    if request.method == 'POST':
+        email = request.form.get('email').lower()
+        senha = request.form.get('senha')
+
+        usuario = CadastroModel.query.filter_by(email = email, senha = senha).first()
+        if usuario and check_password_hash(usuario.senha, senha):
+            session['email'] = usuario.email
+            session['nome'] = usuario.nome
+            time.sleep(2)
+            return redirect(url_for('index'))
+        else:
+            flash('email ou senha invalido')
+
+
     return render_template('login.html',titulo = 'Login')
+    
+@app.route('/sair')
+def sair():
+    session.pop('email', None)
+    session.pop('nome', None)
+    return redirect(url_for('login'))

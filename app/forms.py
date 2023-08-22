@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,EmailField,TelField,TextAreaField,SubmitField
+from wtforms import StringField,EmailField,TelField,TextAreaField,SubmitField,PasswordField
 from wtforms.validators import DataRequired
+from flask_wtf.csrf import CSRFProtect
 
 class Contato(FlaskForm):
     nome = StringField('nome', validators=[DataRequired()])
@@ -9,8 +10,8 @@ class Contato(FlaskForm):
     mensagem = TextAreaField('mensagem')
     enviar = SubmitField('enviar')
 
-class Cadastro(flaskForm):
+class Cadastro(FlaskForm):
     nome = StringField('nome', validators=[DataRequired()])
     email = StringField('email', validators=[DataRequired()])
-    senha = StringField('senha', validators=[DataRequired()])
-    enviar = StringField('Enviar')
+    senha = PasswordField('senha', validators=[DataRequired()])
+    enviar = SubmitField('Enviar')

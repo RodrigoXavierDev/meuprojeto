@@ -26,11 +26,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/linguagens">Linguagens</a>
                     </li>
+                    {% if session['email'] %}
                     <li class="nav-item">
-                        <a class="nav-link" href="/cadastre-se">Cadastre-se</a>
+                        <nav class="nav-link">Olá, {{ session['nome'] }}</nav>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sair">Sair</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cadastro">Cadastre-se</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/login">Login</a>
+                    {% endif %}
                     </li>
                 </ul>
             </div>
