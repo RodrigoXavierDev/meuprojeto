@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-header">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for mensagem in messages %}
+                            <div class="alert alert-success" role="alert">
+                                {{ mensagem }}
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <h4 class="card-title">Editar</h4>
+                </div>
+                <div class="card-body">
+                    <form action="" method="POST">
+                        <input type="hidden" name="csrf_token" value="seu_token_aqui">
+                        <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" name="nome" class="form-control" value="{{ session['nome'] }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" name="email" class="form-control" value="{{ session['email'] }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="senha">Senha</label>
+                            <input type="password" name="senha" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

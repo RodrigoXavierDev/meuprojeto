@@ -63,7 +63,7 @@ def login():
         email = request.form.get('email').lower()
         senha = request.form.get('senha')
 
-        usuario = CadastroModel.query.filter_by(email = email, senha = senha).first()
+        usuario = CadastroModel.query.filter_by(email = email).first()
         if usuario and check_password_hash(usuario.senha, senha):
             session['email'] = usuario.email
             session['nome'] = usuario.nome
@@ -80,3 +80,29 @@ def sair():
     session.pop('email', None)
     session.pop('nome', None)
     return redirect(url_for('login'))
+
+@app.route('/editar', methods=['POST','GET'])
+def editar():
+    if 'email' not in session:
+        return redirect(url_for('login'))
+    
+    usuario = CadastroModel.query.filter_by(email = session['email']).first()
+    if request.method =='POST':
+        usuario.nome = request.form.get('nome')
+        usuario.email = request.form.get('email')
+        senha = request.form.get('senha')
+        usuario.senha = bcrypt.generate_password_hash(senha).decode('utf-8')
+        db.session.commit()
+        session['email'] = usuario.email
+        session['nome'] = usuario.nome
+        session['senha'] = usuario.senha
+        flash('Seus dados foram atualizados com sucesso!')
+    return render_template('editar.html',titulo = 'Editar')
+
+@app.route('/excluir-conta')
+def excluir():
+    return render_template('excluir-conta.html',titulo = 'Excluir conta')
+
+@app.route('/usuario')
+def usuario():
+    return render_template('usuario.html',titulo = 'Usuario')
