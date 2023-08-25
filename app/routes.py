@@ -47,12 +47,20 @@ def cadastro():
     cadastro = Cadastro()
     print('Acessou a rota de cadastro!')
     if cadastro.validate_on_submit():
+        print('validou os dados')
         flash('Seu cadastro foi realizado com sucesso!')
         nome = cadastro.nome.data
+        sobrenome = cadastro.sobrenome.data
         email = cadastro.email.data
         senha = cadastro.senha.data
+        cpf = cadastro.cpf.data
+        telefone = cadastro.telefone.data
+        endereco = cadastro.endereco.data
+        bairro = cadastro.bairro.data
+        cidade = cadastro.cidade.data
+        uf = cadastro.uf.data
         hash_senha = bcrypt.generate_password_hash(senha).decode('utf_8')
-        novo_cadastro = CadastroModel(nome=nome,email=email,senha=hash_senha)
+        novo_cadastro = CadastroModel(nome=nome,email=email,senha=hash_senha,sobrenome=sobrenome,cpf=cpf,telefone=telefone,endereco=endereco,bairro=bairro,cidade=cidade,uf=uf)
         db.session.add(novo_cadastro)
         db.session.commit()
     return render_template('cadastro.html',titulo = 'Cadastro', cadastro=cadastro)
@@ -89,7 +97,14 @@ def editar():
     usuario = CadastroModel.query.filter_by(email = session['email']).first()
     if request.method =='POST':
         usuario.nome = request.form.get('nome')
+        usuario.sobrenome = request.form.get('sobrenome')
         usuario.email = request.form.get('email')
+        usuario.cpf = request.form.get('cpf')
+        usuario.telefone = request.form.get('telefone')
+        usuario.endereco = request.form.get('endereco')
+        usuario.bairro = request.form.get('bairro')
+        usuario.cidade = request.form.get('cidade')
+        usuario.uf = request.form.get('uf')
         senha = request.form.get('senha')
         usuario.senha = bcrypt.generate_password_hash(senha).decode('utf-8')
         db.session.commit()
@@ -99,9 +114,19 @@ def editar():
         flash('Seus dados foram atualizados com sucesso!')
     return render_template('editar.html',titulo = 'Editar')
 
-@app.route('/excluir-conta')
+@app.route('/excluir_conta', methods =['GET'])
 def excluir():
-    return render_template('excluir-conta.html',titulo = 'Excluir conta')
+    if 'email' not in session:
+        return redirect(url_for('login'))
+
+    usuario = CadastroModel.query.filter_by(email = session['email']).first()
+    db.session.delete(usuario)
+    db.session.commit()
+    session.clear()
+
+    flash('Sua conta foi excluida com sucesso.')
+    return redirect(url_for['cadastro'])
+
 
 @app.route('/usuario')
 def usuario():

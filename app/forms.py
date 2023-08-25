@@ -12,6 +12,13 @@ class Contato(FlaskForm):
 
 class Cadastro(FlaskForm):
     nome = StringField('nome', validators=[DataRequired()])
+    sobrenome = StringField('sobrenome', validators=[DataRequired()])
     email = StringField('email', validators=[DataRequired()])
     senha = PasswordField('senha', validators=[DataRequired()])
+    cpf = StringField('cpf', validators=[DataRequired()])
+    telefone = StringField('telefone', validators=[DataRequired()])
+    endereco = StringField('endereco', validators=[DataRequired()])
+    bairro = StringField('bairro', validators=[DataRequired()])
+    cidade = StringField('cidade', validators=[DataRequired()])
+    uf = StringField('uf', validators=[DataRequired()])
     enviar = SubmitField('Enviar')
